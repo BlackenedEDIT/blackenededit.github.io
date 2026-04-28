@@ -1,13 +1,114 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="google-site-verification" content="8D0IllwDx1Yt3J_gCg7ZUGnVZwmNrD6TCBcXffnjmH8" />
-    <title>Pixel MineR Developer Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pixel Miner | Official Game Site</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for that Fantasy/Studio look -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Pixel MineR</h1>
-    <p>Official developer site for Pixel MineR. <a href="privacy.html">Privacy Policy</a>
-</p>
-    
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">PIXEL MINER</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#media">Media</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="img/logo.png" alt="Pixel Miner Logo" class="main-logo">
+            <p class="tagline">Delve deep. Forge your legacy. Unleash the crystals.</p>
+            <a href="#about" class="cta-button">Discover More</a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container dual-col">
+            <div class="text-col">
+                <h2 class="section-title">Enter the Depths</h2>
+                <p>Welcome to <strong>Pixel Miner</strong>, where the ancient dwarven halls await your pickaxe. Embark on an epic journey to unearth glowing runic crystals, craft legendary gear, and rebuild the forgotten mountain town.</p>
+                <p>Will you become a master blacksmith, a fearless delver of the deep dark, or the wealthiest merchant in the realm? The mountain calls.</p>
+            </div>
+            <div class="img-col">
+                <img src="img/dwarf.png" alt="Dwarven Miner" class="floating-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section dark-bg">
+        <div class="container">
+            <h2 class="section-title text-center">Game Features</h2>
+            <div class="grid-3">
+                <div class="feature-card">
+                    <img src="img/pickaxe.png" alt="Legendary Mining">
+                    <h3>Endless Mining</h3>
+                    <p>Discover varying biomes, hidden caverns, and rare elemental ores as you dig deeper into the abyss.</p>
+                </div>
+                <div class="feature-card">
+                    <img src="img/anvil.png" alt="Arcane Forging">
+                    <h3>Arcane Forging</h3>
+                    <p>Use the runic anvil to smelt ores and forge powerful gear imbued with mysterious crystal magic.</p>
+                </div>
+                <div class="feature-card">
+                    <img src="img/chest.png" alt="Epic Loot">
+                    <h3>Epic Loot & Secrets</h3>
+                    <p>Unlock ancient steampunk vaults and discover treasures left behind by the legendary First Miners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video/Media Section -->
+    <section id="media" class="section">
+        <div class="container">
+            <h2 class="section-title text-center">Latest Intel</h2>
+            <div class="video-grid">
+                <!-- Replace the 'src' link with your YouTube embed links -->
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section hero-bg-contact">
+        <div class="hero-overlay"></div>
+        <div class="container contact-container">
+            <h2 class="section-title text-center">Join the Guild</h2>
+            <p class="text-center" style="margin-bottom: 2rem;">Want to reach out to the developers or report a bug? Drop us a missive.</p>
+            
+            <!-- Using Formspree (Free & requires no backend). Just replace the action URL with your own from formspree.io later -->
+            <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="cta-button">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Pixel Miner Inc. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
