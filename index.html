@@ -1,111 +1,393 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pixel Miner | Official Game Site</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts for that Fantasy/Studio look -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Pixel MineR — Delve into a world of ancient secrets, forge legendary equipment, and claim the riches of the First Miners. Free on Android." />
+  <title>Pixel MineR – Delve Deep. Forge Your Legacy.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo">PIXEL MINER</a>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#media">Media</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero">
+        <img src="img/logo.png" alt="Pixel MineR" />
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#media">Media</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn-play" href="https://play.google.com/store" target="_blank" rel="noopener">
+          <i class="fab fa-google-play"></i> Play Free
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <header id="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <img src="img/logo.png" alt="Pixel Miner Logo" class="main-logo">
-            <p class="tagline">Delve deep. Forge your legacy. Unleash the crystals.</p>
-            <a href="#about" class="cta-button">Discover More</a>
-        </div>
-    </header>
+  <!-- ═══ HERO ══════════════════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-parallax" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <canvas class="hero-canvas" id="particleCanvas"></canvas>
+    <div class="hero-content">
+      <span class="hero-badge"><i class="fas fa-star"></i> Now Available on Android</span>
+      <img src="img/logo.png" alt="Pixel MineR" class="hero-logo" />
+      <p class="hero-tagline">Delve deep. Forge your legacy. Unleash the crystals.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="https://play.google.com/store" target="_blank" rel="noopener">
+          <i class="fab fa-google-play"></i> Download Free
+        </a>
+        <a class="btn btn-ghost" href="#media">
+          <i class="fas fa-play-circle"></i> Watch Trailer
+        </a>
+      </div>
+    </div>
+    <a class="hero-scroll" href="#about">
+      <span>Scroll to explore</span>
+      <div class="hero-scroll-icon"><i class="fas fa-chevron-down"></i></div>
+    </a>
+  </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
-        <div class="container dual-col">
-            <div class="text-col">
-                <h2 class="section-title">Enter the Depths</h2>
-                <p>Welcome to <strong>Pixel Miner</strong>, where the ancient dwarven halls await your pickaxe. Embark on an epic journey to unearth glowing runic crystals, craft legendary gear, and rebuild the forgotten mountain town.</p>
-                <p>Will you become a master blacksmith, a fearless delver of the deep dark, or the wealthiest merchant in the realm? The mountain calls.</p>
+  <!-- ═══ STATS ════════════════════════════════════════════════════════════ -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat reveal-up">
+          <div class="stat-val"><span class="counter" data-to="50">0</span><span>+</span></div>
+          <div class="stat-lbl">Unique Biomes</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat reveal-up" style="--delay:0.1s">
+          <div class="stat-val"><span class="counter" data-to="200">0</span><span>+</span></div>
+          <div class="stat-lbl">Craftable Items</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat reveal-up" style="--delay:0.2s">
+          <div class="stat-val"><span class="counter" data-to="4">0</span></div>
+          <div class="stat-lbl">Hero Classes</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat reveal-up" style="--delay:0.3s">
+          <div class="stat-val"><span class="counter" data-to="100">0</span><span>%</span></div>
+          <div class="stat-lbl">Free to Play</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ════════════════════════════════════════════════════════════ -->
+  <section class="about section" id="about">
+    <div class="container about-inner">
+      <div class="about-visual reveal-left">
+        <div class="about-art">
+          <img src="img/dwarf.png" alt="Dwarven Miner" class="about-char" />
+          <div class="about-art-glow"></div>
+          <img src="img/pickaxe.png" alt="" class="float-deco deco-1" aria-hidden="true" />
+          <img src="img/golden_chest.png" alt="" class="float-deco deco-2" aria-hidden="true" />
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <span class="eyebrow">The Adventure Awaits</span>
+        <h2>What is <em class="c-cyan">Pixel MineR</em>?</h2>
+        <p>Journey into the depths of a world teeming with ancient secrets and untold riches. As a master miner you'll carve your path through spectacular biomes, forge legendary equipment, and uncover the mysteries of a civilisation long lost to the deep.</p>
+        <p>Combine pixel-art charm with deep RPG mechanics — manage your inventory, level up your craft, and face the challenges lurking in every cavern. Every descent reveals something new.</p>
+        <div class="about-tags">
+          <span class="tag"><i class="fas fa-gem"></i> Deep Mining</span>
+          <span class="tag"><i class="fas fa-hammer"></i> Arcane Forging</span>
+          <span class="tag"><i class="fas fa-coins"></i> Epic Loot</span>
+          <span class="tag"><i class="fas fa-door-open"></i> Ancient Vaults</span>
+        </div>
+        <a class="btn btn-primary" href="https://play.google.com/store" target="_blank" rel="noopener">
+          <i class="fab fa-google-play"></i> Play Now – It's Free
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CLASSES ═══════════════════════════════════════════════════════════ -->
+  <section class="classes section" id="classes">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Choose Your Path</span>
+        <h2>Character <em class="c-gold">Classes</em></h2>
+        <p class="section-sub">Each class brings unique abilities and a distinct playstyle to your mining adventure.</p>
+      </div>
+      <div class="classes-grid">
+
+        <div class="class-card reveal-up" style="--delay:0s" data-glow="gold">
+          <div class="class-icon-wrap">
+            <img src="img/golden_miner_icon.png" alt="Golden Miner" />
+          </div>
+          <div class="class-tag gold-tag">Wealth</div>
+          <h3>Golden Miner</h3>
+          <p>Master of wealth and fortune. Unlocks bonus gold veins and treasure multipliers in every deep dive.</p>
+        </div>
+
+        <div class="class-card reveal-up" style="--delay:0.1s" data-glow="green">
+          <div class="class-icon-wrap">
+            <img src="img/lucky_miner_icon.png" alt="Lucky Miner" />
+          </div>
+          <div class="class-tag green-tag">Fortune</div>
+          <h3>Lucky Miner</h3>
+          <p>Fortune favours the bold. Enhanced loot drops and rare item discovery rates keep you ahead.</p>
+        </div>
+
+        <div class="class-card reveal-up" style="--delay:0.2s" data-glow="purple">
+          <div class="class-icon-wrap">
+            <img src="img/astral_weaver_icon.png" alt="Astral Weaver" />
+          </div>
+          <div class="class-tag purple-tag">Arcane</div>
+          <h3>Astral Weaver</h3>
+          <p>Channel the power of the cosmos. Harness elemental energies to transmute ores into arcane materials.</p>
+        </div>
+
+        <div class="class-card reveal-up" style="--delay:0.3s" data-glow="cyan">
+          <div class="class-icon-wrap">
+            <img src="img/prismatic_miner_icon.png" alt="Prismatic Miner" />
+          </div>
+          <div class="class-tag cyan-tag">Crystal</div>
+          <h3>Prismatic Miner</h3>
+          <p>Master of all crystals. Unlock the full spectrum of mining potential with prismatic abilities.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES — BENTO GRID ════════════════════════════════════════════ -->
+  <section class="features section" id="features">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Core Gameplay</span>
+        <h2>Game <em class="c-cyan">Features</em></h2>
+      </div>
+      <div class="features-bento">
+
+        <div class="feat-card feat-lg reveal-up" style="--delay:0s">
+          <div class="feat-bg" style="background-image:url('img/jasper_location_bg.png')"></div>
+          <div class="feat-content">
+            <i class="fas fa-mountain feat-icon"></i>
+            <h3>Endless Mining</h3>
+            <p>Explore procedurally generated biomes teeming with rare ores, hidden caverns, and elemental crystals. Every descent is a new story.</p>
+          </div>
+        </div>
+
+        <div class="feat-card reveal-up" style="--delay:0.1s">
+          <div class="feat-bg" style="background-image:url('img/iron_forge_bg.png')"></div>
+          <div class="feat-content">
+            <i class="fas fa-fire feat-icon"></i>
+            <h3>Arcane Forging</h3>
+            <p>Smelt ores and craft magical equipment at the runic anvil. Create legendary gear that defines your playstyle.</p>
+          </div>
+        </div>
+
+        <div class="feat-card reveal-up" style="--delay:0.15s">
+          <div class="feat-bg" style="background-image:url('img/aetherium_vault_bg.png')"></div>
+          <div class="feat-content">
+            <i class="fas fa-vault feat-icon"></i>
+            <h3>Epic Vaults</h3>
+            <p>Discover ancient steampunk vaults and master the lockpick to claim treasures of the First Miners.</p>
+          </div>
+        </div>
+
+        <div class="feat-card reveal-up" style="--delay:0.2s">
+          <div class="feat-bg" style="background-image:url('img/aetherium_minigame_bg.png')"></div>
+          <div class="feat-content">
+            <i class="fas fa-wand-magic-sparkles feat-icon"></i>
+            <h3>Aetherium Realm</h3>
+            <p>Enter the mystical Aetherium for challenging minigames and massive crystal rewards.</p>
+          </div>
+        </div>
+
+        <div class="feat-card feat-lg reveal-up" style="--delay:0.25s">
+          <div class="feat-bg" style="background-image:url('img/lockpick_bg.png')"></div>
+          <div class="feat-content">
+            <i class="fas fa-key feat-icon"></i>
+            <h3>Loot &amp; Secrets</h3>
+            <p>Ancient chests, hidden passages, and legendary artifacts await those bold enough to explore every corner of the deep. Uncover the legacy of the First Miners.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GALLERY ═══════════════════════════════════════════════════════════ -->
+  <section class="gallery section" id="gallery">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Visual Journey</span>
+        <h2>Game <em class="c-gold">Gallery</em></h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item gal-wide reveal-up" style="--delay:0s;background-image:url('img/jasper_hideout_bg.png')">
+          <div class="gallery-cap">Jasper's Hideout</div>
+        </div>
+        <div class="gallery-item reveal-up" style="--delay:0.1s;background-image:url('img/iron_forge_bg.png')">
+          <div class="gallery-cap">Iron Forge</div>
+        </div>
+        <div class="gallery-item reveal-up" style="--delay:0.15s;background-image:url('img/aetherium_vault_bg.png')">
+          <div class="gallery-cap">Aetherium Vault</div>
+        </div>
+        <div class="gallery-item reveal-up" style="--delay:0.2s;background-image:url('img/lockpick_bg.png')">
+          <div class="gallery-cap">Lockpick Challenge</div>
+        </div>
+        <div class="gallery-item gal-wide reveal-up" style="--delay:0.25s;background-image:url('img/aetherium_minigame_bg.png')">
+          <div class="gallery-cap">Aetherium Arena</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MEDIA ═════════════════════════════════════════════════════════════ -->
+  <section class="media section" id="media">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Watch &amp; Play</span>
+        <h2>Game <em class="c-cyan">Media</em></h2>
+      </div>
+      <div class="media-grid">
+        <div class="video-card reveal-up">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/ZEsTNP-w54s" title="Pixel MineR Gameplay" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-label"><i class="fas fa-play-circle"></i> Gameplay Trailer</div>
+        </div>
+        <div class="video-card reveal-up" style="--delay:0.15s">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/5hK7UNuHh_g" title="Pixel MineR Features" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-label"><i class="fas fa-star"></i> Feature Showcase</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BANNER ════════════════════════════════════════════════════════ -->
+  <section class="cta-banner">
+    <div class="container cta-inner reveal-up">
+      <div class="cta-text">
+        <h2>Ready to Delve Deep?</h2>
+        <p>Join thousands of miners exploring the depths. Download Pixel MineR free on Android today.</p>
+        <a class="btn btn-primary" href="https://play.google.com/store" target="_blank" rel="noopener">
+          <i class="fab fa-google-play"></i> Download on Google Play
+        </a>
+      </div>
+      <div class="cta-visual" aria-hidden="true">
+        <img src="img/treasure_chest_HD_closed.png" alt="" class="cta-chest" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══════════════════════════════════════════════════════════ -->
+  <section class="contact section" id="contact">
+    <div class="contact-bg" style="background-image:url('img/bg-camp.png')"></div>
+    <div class="contact-overlay"></div>
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Contact <em class="c-gold">Us</em></h2>
+        <p class="section-sub">Questions, feedback, or partnership enquiries? We'd love to hear from you.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal-left">
+          <div class="cinfo-item">
+            <div class="cinfo-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <strong>Email Us</strong>
+              <a href="mailto:pixelminerinc@gmail.com">pixelminerinc@gmail.com</a>
             </div>
-            <div class="img-col">
-                <img src="img/dwarf.png" alt="Dwarven Miner" class="floating-img">
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon"><i class="fab fa-google-play"></i></div>
+            <div>
+              <strong>Download the Game</strong>
+              <a href="https://play.google.com/store" target="_blank" rel="noopener">Available on Google Play</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="section dark-bg">
-        <div class="container">
-            <h2 class="section-title text-center">Game Features</h2>
-            <div class="grid-3">
-                <div class="feature-card">
-                    <img src="img/pickaxe.png" alt="Legendary Mining">
-                    <h3>Endless Mining</h3>
-                    <p>Discover varying biomes, hidden caverns, and rare elemental ores as you dig deeper into the abyss.</p>
-                </div>
-                <div class="feature-card">
-                    <img src="img/anvil.png" alt="Arcane Forging">
-                    <h3>Arcane Forging</h3>
-                    <p>Use the runic anvil to smelt ores and forge powerful gear imbued with mysterious crystal magic.</p>
-                </div>
-                <div class="feature-card">
-                    <img src="img/chest.png" alt="Epic Loot">
-                    <h3>Epic Loot & Secrets</h3>
-                    <p>Unlock ancient steampunk vaults and discover treasures left behind by the legendary First Miners.</p>
-                </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon"><i class="fas fa-shield-halved"></i></div>
+            <div>
+              <strong>Privacy Policy</strong>
+              <a href="privacy.html">View our privacy policy</a>
             </div>
+          </div>
         </div>
-    </section>
+        <form class="contact-form reveal-right" action="https://formspree.io/f/your_form_id" method="POST">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us what you think..." required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">
+            Send Message <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
 
-    <!-- Video/Media Section -->
-    <section id="media" class="section">
-        <div class="container">
-            <h2 class="section-title text-center">Latest Intel</h2>
-            <div class="video-grid">
-                <!-- Replace the 'src' link with your YouTube embed links -->
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZEsTNP-w54s?si=m6EKP2evDyk1chlM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
-                <div class="video-wrapper">
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/5hK7UNuHh_g?si=djIWJmkSM7Mc5kwe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+  <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="img/logo.png" alt="Pixel MineR" />
+        <p>Pixel MineR Inc. — Mining adventures for brave souls.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Game</h4>
+          <a href="#about">About</a>
+          <a href="#classes">Classes</a>
+          <a href="#features">Features</a>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section hero-bg-contact">
-        <div class="hero-overlay"></div>
-        <div class="container contact-container">
-            <h2 class="section-title text-center">Join the Guild</h2>
-            <p class="text-center" style="margin-bottom: 2rem;">Want to reach out to the developers or report a bug? Drop us a missive.</p>
-            
-            <!-- Using Formspree (Free & requires no backend). Just replace the action URL with your own from formspree.io later -->
-            <form action="https://formspree.io/f/your_form_id" method="POST" class="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
+        <div class="footer-col">
+          <h4>Media</h4>
+          <a href="#gallery">Gallery</a>
+          <a href="#media">Videos</a>
         </div>
-    </section>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="mailto:pixelminerinc@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>&copy; 2026 Pixel Miner Inc. All rights reserved.</p>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Pixel Miner Inc. All rights reserved.</p>
-    </footer>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
