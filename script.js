@@ -1,3 +1,7 @@
+/* Honoured by the JS-driven animations below — the CSS media query can't reach
+   canvas particles or the counter tween. */
+const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 /* ─── NAVBAR ─────────────────────────────────────────────────────────────── */
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
@@ -8,15 +12,21 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const navMenu   = document.getElementById('navMenu');
 
+const setNav = (open) => {
+  hamburger.classList.toggle('open', open);
+  navMenu.classList.toggle('open', open);
+  hamburger.setAttribute('aria-expanded', String(open));
+};
+
 hamburger.addEventListener('click', () => {
-  hamburger.classList.toggle('open');
-  navMenu.classList.toggle('open');
+  setNav(!navMenu.classList.contains('open'));
 });
 navMenu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    hamburger.classList.remove('open');
-    navMenu.classList.remove('open');
-  });
+  link.addEventListener('click', () => setNav(false));
+});
+// Escape closes the drawer — it covers the whole viewport on mobile.
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && navMenu.classList.contains('open')) setNav(false);
 });
 
 /* ─── SMOOTH SCROLL ──────────────────────────────────────────────────────── */
@@ -25,7 +35,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const target = document.querySelector(anchor.getAttribute('href'));
     if (target) {
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
     }
   });
 });
@@ -49,8 +59,15 @@ const counterObserver = new IntersectionObserver((entries) => {
     if (!entry.isIntersecting) return;
     const el     = entry.target;
     const target = parseInt(el.dataset.to, 10);
-    const start  = performance.now();
-    const dur    = 1800;
+
+    if (reduceMotion) {
+      el.textContent = target;
+      counterObserver.unobserve(el);
+      return;
+    }
+
+    const start = performance.now();
+    const dur   = 1800;
 
     const tick = (now) => {
       const p = Math.min((now - start) / dur, 1);
@@ -66,7 +83,7 @@ document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el))
 
 /* ─── HERO PARALLAX ──────────────────────────────────────────────────────── */
 const heroBg = document.getElementById('heroBg');
-if (heroBg) {
+if (heroBg && !reduceMotion) {
   window.addEventListener('scroll', () => {
     if (window.scrollY < window.innerHeight) {
       heroBg.style.transform = `translateY(${window.scrollY * 0.22}px)`;
@@ -76,7 +93,7 @@ if (heroBg) {
 
 /* ─── PARTICLE CANVAS ────────────────────────────────────────────────────── */
 const canvas = document.getElementById('particleCanvas');
-if (canvas) {
+if (canvas && !reduceMotion) {
   const ctx = canvas.getContext('2d');
   let animId;
   let active = true;
@@ -100,7 +117,8 @@ if (canvas) {
       this.alpha  = Math.random() * 0.55 + 0.2;
       this.life   = 0;
       this.maxLife = Math.random() * 220 + 80;
-      this.rgb    = Math.random() > 0.55 ? '102,252,241' : '212,175,55';
+      // Gemhollow's two accent colours: cyan #00e6e6 and gold #ffd700.
+      this.rgb    = Math.random() > 0.55 ? '0,230,230' : '255,215,0';
     }
 
     update() {
