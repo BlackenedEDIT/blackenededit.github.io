@@ -248,6 +248,11 @@ section[id] { scroll-margin-top: 84px; }
   flex-direction: column;
   gap: 5px;
   padding: 6px;
+  /* z-index has no effect on a statically positioned element — without this the
+     open drawer's own z-index (999, see the 768px block) physically covers the
+     button's screen position and swallows the tap that's supposed to close it. */
+  position: relative;
+  z-index: 1001;
 }
 .hamburger span {
   display: block;
