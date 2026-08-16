@@ -213,6 +213,7 @@ section[id] { scroll-margin-top: 84px; }
   font-size: 0.88rem;
   font-weight: 500;
   color: var(--text);
+  white-space: nowrap;
   transition: var(--t) var(--ease);
 }
 .nav-menu a:hover {
@@ -1322,6 +1323,9 @@ section[id] { scroll-margin-top: 84px; }
   .worlds-grid       { grid-template-columns: 1fr; }
   .vault-grid        { grid-template-columns: repeat(2, 1fr); }
   .pick-grid         { grid-template-columns: repeat(3, 1fr); }
+  /* Nine items now fit tighter before the drawer takes over at 768px. */
+  .nav-menu           { gap: 0; }
+  .nav-menu a          { padding: 8px 9px; font-size: 0.82rem; }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -1652,4 +1656,127 @@ section[id] { scroll-margin-top: 84px; }
 }
 @media (max-width: 480px) {
   .ore-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   THE CLAIM
+═══════════════════════════════════════════════════════════════════════════ */
+.claim { background: var(--bg); }
+
+.claim-hero {
+  margin-bottom: 20px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+.claim-hero img {
+  width: 100%;
+  display: block;
+}
+.claim-hero-cap {
+  padding: 14px 20px;
+  background: var(--surface);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.claim-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin: 56px 0;
+}
+.claim-info h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 14px;
+}
+.claim-info p {
+  color: var(--text);
+  font-size: 0.97rem;
+  margin-bottom: 14px;
+}
+.claim-info strong { color: var(--gold); font-weight: 600; }
+.claim-info em { color: var(--cyan); font-style: normal; font-weight: 600; }
+
+.claim-rooms {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.claim-room {
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  position: relative;
+  transition: border-color var(--t) var(--ease);
+}
+.claim-room:hover { border-color: rgba(255, 215, 0, 0.35); }
+.claim-room img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+.claim-room:hover img { transform: scale(1.03); }
+.claim-room-cap {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 22px 20px 16px;
+  background: linear-gradient(to top, rgba(11, 16, 24, 0.94) 0%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.claim-room-name {
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-bright);
+}
+.claim-room-sub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.claim-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 56px;
+  padding: 30px 10px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.claim-stat { text-align: center; }
+.claim-stat-val {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: var(--glow-gold);
+  line-height: 1;
+}
+.claim-stat-lbl {
+  margin-top: 8px;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .claim-info-grid { gap: 32px; }
+}
+@media (max-width: 768px) {
+  .claim-info-grid { grid-template-columns: 1fr; gap: 32px; }
+  .claim-rooms     { grid-template-columns: 1fr; }
+  .claim-stats     { grid-template-columns: repeat(2, 1fr); row-gap: 28px; }
+}
+@media (max-width: 480px) {
+  .claim-stats { grid-template-columns: 1fr 1fr; }
 }
