@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
+  <!-- Same pumpkin geometry as app/src/main/res/drawable/ic_launcher_foreground.xml
+       and store/icon/generate.js, flattened to fewer tones for favicon size. -->
+  <rect width="108" height="108" rx="20" fill="#0B0714"/>
+  <path fill="#FF7518" d="M54,34 C74,34 86,50 86,66 C86,80 71,90 54,90 C37,90 22,80 22,66 C22,50 34,34 54,34 Z"/>
+  <path fill="#5B7A2E" d="M50,34 C49,26 53,20 61,19 C63,19 64,21 62,22 C57,24 55,28 56,34 Z"/>
+  <path fill="#0B0714" d="M40,58 L48,58 L44,68 Z"/>
+  <path fill="#0B0714" d="M60,58 L68,58 L64,68 Z"/>
+  <path fill="#0B0714" d="M34,76 L38,72 L44,76 L50,72 L56,76 L62,72 L68,76 L74,72 L74,80 L34,80 Z"/>
+</svg>

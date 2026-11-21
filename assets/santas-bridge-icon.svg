@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
+  <!-- Same tree geometry as app/src/main/res/drawable/ic_launcher_foreground.xml
+       and store/icon/generate.js, flattened to fewer tones for favicon size. -->
+  <rect width="108" height="108" rx="20" fill="#071228"/>
+  <path fill="#8A5A0E" d="M49,80 L59,80 L59,90 L49,90 Z"/>
+  <path fill="#14663F" d="M54,32 L68,52 L40,52 Z"/>
+  <path fill="#14663F" d="M54,45 L74,66 L34,66 Z"/>
+  <path fill="#14663F" d="M54,58 L80,82 L28,82 Z"/>
+  <path fill="#1B8A54" d="M54,37 L64,52 L44,52 Z"/>
+  <path fill="#1B8A54" d="M54,50 L69,66 L39,66 Z"/>
+  <path fill="#1B8A54" d="M54,63 L74,82 L34,82 Z"/>
+  <path fill="#FFCA4A" d="M54,18 L57,24 L63,26 L57,28 L54,34 L51,28 L45,26 L51,24 Z"/>
+</svg>

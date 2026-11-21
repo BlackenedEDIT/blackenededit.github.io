@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 108">
+  <!-- Same two-boards geometry as app/src/main/res/drawable/ic_launcher_foreground.xml
+       and store/icon/generate.js, flattened to two solid tones instead of a
+       gradient + cutout — legible at favicon size, where the real hollow-gate
+       render (see docs/GOTCHAS.md #5b) would just look like a smudge. -->
+  <rect width="108" height="108" rx="20" fill="#121935"/>
+  <path fill="#F5C542" d="M21,80 L87,80 A3,3 0 0,1 87,86 L21,86 A3,3 0 0,1 21,80 Z"/>
+  <path fill="#F5C542" d="M27,28 L47,28 A4,4 0 0,1 51,32 L51,80 L23,80 L23,32 A4,4 0 0,1 27,28 Z"/>
+  <path fill="#8A93B8" d="M61,28 L81,28 A4,4 0 0,1 85,32 L85,80 L57,80 L57,32 A4,4 0 0,1 61,28 Z"/>
+</svg>

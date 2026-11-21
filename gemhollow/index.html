@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Gemhollow — dig a fully destructible mine for gems, craft gear, tame pets and raid deadly puzzle vaults across two worlds. Free on Android." />
+  <title>Gemhollow – Dig Deep. Strike It Rich.</title>
+
+  <link rel="icon" type="image/png" href="img/gemhollow_mark_sm.png" />
+  <link rel="apple-touch-icon" href="img/gemhollow_mark.png" />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gemhollow – Dig Deep. Strike It Rich." />
+  <meta property="og:description" content="A hand-painted mining RPG. Two worlds, 56 story quests, 6 puzzle vaults, and 500m of fully destructible rock. Free on Android." />
+  <meta property="og:image" content="https://blackenededit.github.io/img/shot_hub.jpg" />
+  <meta property="og:url" content="https://blackenededit.github.io/" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Cinzel + Poppins are the two fonts the game itself ships with. -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css?v=3" />
+</head>
+<body>
+
+  <!-- ═══ NAVBAR ═══════════════════════════════════════════════════════════ -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a class="nav-logo" href="#hero" aria-label="Gemhollow home">
+        <img src="img/gemhollow_mark_sm.png" alt="" aria-hidden="true" />
+        <span class="nav-wordmark">Gemhollow</span>
+      </a>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#worlds">Worlds</a></li>
+        <li><a href="#systems">Systems</a></li>
+        <li><a href="#gear">Gear</a></li>
+        <li><a href="#vaults">Vaults</a></li>
+        <li><a href="#claim">The Claim</a></li>
+        <li><a href="#miners">Miners</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a class="btn-play" href="https://play.google.com/store/apps/details?id=com.pixelminergame.pixelminer" target="_blank" rel="noopener">
+          <i class="fab fa-google-play"></i> Play Free
+        </a>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ══════════════════════════════════════════════════════════════ -->
+  <section class="hero" id="hero">
+    <div class="hero-parallax" id="heroBg"></div>
+    <div class="hero-overlay"></div>
+    <canvas class="hero-canvas" id="particleCanvas" aria-hidden="true"></canvas>
+    <div class="hero-content">
+      <span class="hero-badge"><i class="fas fa-gem"></i> Free on Google Play</span>
+
+      <!-- Mark + wordmark, mirroring the game's own boot screen: the name is
+           live text in Cinzel, not baked into artwork. -->
+      <div class="hero-brand">
+        <img src="img/gemhollow_mark.png" alt="Gemhollow" class="hero-mark" width="512" height="512" />
+        <h1 class="hero-wordmark">Gemhollow</h1>
+      </div>
+
+      <p class="hero-tagline">Dig a destructible mine. Craft the gear. Raid the vaults.</p>
+      <div class="hero-btns">
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.pixelminergame.pixelminer" target="_blank" rel="noopener">
+          <i class="fab fa-google-play"></i> Download Free
+        </a>
+        <a class="btn btn-ghost" href="#media">
+          <i class="fas fa-play-circle"></i> Watch Gameplay
+        </a>
+      </div>
+    </div>
+    <a class="hero-scroll" href="#about">
+      <span>Scroll to explore</span>
+      <div class="hero-scroll-icon"><i class="fas fa-chevron-down"></i></div>
+    </a>
+  </section>
+
+  <!-- ═══ STATS ════════════════════════════════════════════════════════════
+       Every figure here is counted straight out of the game's data files.
+  ═══════════════════════════════════════════════════════════════════════════ -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat reveal-up">
+          <div class="stat-val"><span class="counter" data-to="2">0</span></div>
+          <div class="stat-lbl">Worlds</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat reveal-up" style="--delay:0.1s">
+          <div class="stat-val"><span class="counter" data-to="58">0</span></div>
+          <div class="stat-lbl">Story Quests</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat reveal-up" style="--delay:0.2s">
+          <div class="stat-val"><span class="counter" data-to="6">0</span></div>
+          <div class="stat-lbl">Puzzle Vaults</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat reveal-up" style="--delay:0.3s">
+          <div class="stat-val"><span class="counter" data-to="500">0</span><span>m</span></div>
+          <div class="stat-lbl">Depth Per World</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ════════════════════════════════════════════════════════════ -->
+  <section class="about section" id="about">
+    <div class="container about-inner">
+      <div class="about-visual reveal-left">
+        <div class="about-art">
+          <img src="img/shot_deep_mine.jpg" alt="Mining through stone and gem veins deep in the Gemhollow mine" class="about-shot" loading="lazy" />
+          <div class="about-art-glow"></div>
+          <img src="img/diamond_pickaxe_icon.png" alt="" class="float-deco deco-1" aria-hidden="true" />
+          <img src="img/aetherium.png" alt="" class="float-deco deco-2" aria-hidden="true" />
+        </div>
+      </div>
+      <div class="about-text reveal-right">
+        <span class="eyebrow">The Company Is Hiring</span>
+        <h2>What is <em class="c-cyan">Gemhollow</em>?</h2>
+        <p>Gemhollow is a hand-painted mining RPG where <strong>every block is yours to break</strong>. You start with a basic pickaxe and fifteen pockets of carrying space, and you dig — sideways, downward, wherever the ore is — placing your own ladders, ceiling supports and bridging beams to reach seams nobody else can.</p>
+        <p>Haul what you find back to the surface, sell it on a market whose prices actually move, and turn the money into a better pickaxe, a bigger pack, a brighter lamp. Then go deeper, because the good stuff is always deeper.</p>
+        <p>Two full worlds, <strong>56 story quests</strong>, six hand-built puzzle vaults, pets, robot miners and a contracts board — and the whole thing is free, with rewarded ads that are always optional.</p>
+        <div class="about-tags">
+          <span class="tag"><i class="fas fa-cube"></i> Fully Destructible</span>
+          <span class="tag"><i class="fas fa-hammer"></i> Craft &amp; Upgrade</span>
+          <span class="tag"><i class="fas fa-scroll"></i> Story Campaign</span>
+          <span class="tag"><i class="fas fa-moon"></i> Offline Earnings</span>
+        </div>
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.pixelminergame.pixelminer" target="_blank" rel="noopener">
+          <i class="fab fa-google-play"></i> Play Now – It's Free
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ WORLDS ════════════════════════════════════════════════════════════ -->
+  <section class="worlds section" id="worlds">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Two Descents</span>
+        <h2>The <em class="c-cyan">Worlds</em></h2>
+        <p class="section-sub">Two complete mines, each 500 metres deep, each with its own ores, tools, hazards and economy.</p>
+      </div>
+      <div class="worlds-grid">
+
+        <article class="world-card reveal-up" data-world="1">
+          <div class="world-media">
+            <img src="img/world1_map.jpg" alt="The surface hub in daylight, with Mine Control, Market, Item Shop and Gear Shop around the mine entrance" loading="lazy" />
+            <span class="world-index">World I</span>
+          </div>
+          <div class="world-body">
+            <h3>The Surface Mine</h3>
+            <p>Home base is a sunlit village — Mine Control, the Market, the Item Shop, the Gear Shop — built around the tunnel entrance that drops you into the shaft. Stone gives way to iron, then gold, then diamond, and the rare stuff starts appearing once you're past a hundred metres down.</p>
+            <ul class="world-facts">
+              <li><i class="fas fa-gem"></i> Quartz from 25m, Ruby from 80m, Sapphire from 160m</li>
+              <li><i class="fas fa-atom"></i> Prismatic Cores from 200m, Aetherium from 250m</li>
+              <li><i class="fas fa-door-open"></i> The Elder Gate waits at <strong>240m</strong></li>
+              <li><i class="fas fa-box-open"></i> 40 chests per mine, golden ones below 150m</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="world-card reveal-up" style="--delay:0.12s" data-world="2">
+          <div class="world-media">
+            <img src="img/world2_map.jpg" alt="The Abyss hub, a cavern lit by glowing crystals and mushrooms around the portal" loading="lazy" />
+            <span class="world-index">World II</span>
+          </div>
+          <div class="world-body">
+            <h3>The Abyss</h3>
+            <p>Through the gate, everything is harder and worth more. Abyssal Rock takes ten times the swings of surface stone, toxic gas pockets bleed your vitality until you've earned a rebreather, and the ores are corrupted mirrors of the ones you knew — Shadow Iron, Void Diamond, Star Sapphire.</p>
+            <ul class="world-facts">
+              <li><i class="fas fa-skull-crossbones"></i> Toxic gas: 15 vitality/second without a mask</li>
+              <li><i class="fas fa-mask-face"></i> Filter Mask cuts it to 5/s, Rebreather to zero</li>
+              <li><i class="fas fa-lock"></i> Void-Sealed Rock and Obsidian Barriers gate the descent</li>
+              <li><i class="fas fa-star"></i> Dark Aetherium sells for <strong>$5,000</strong> a unit</li>
+            </ul>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ SYSTEMS — BENTO GRID ═════════════════════════════════════════════ -->
+  <section class="features section" id="systems">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Core Gameplay</span>
+        <h2>Game <em class="c-gold">Systems</em></h2>
+        <p class="section-sub">Not a feature list — these are the actual systems running in the game right now.</p>
+      </div>
+      <div class="features-bento">
+
+        <div class="feat-card feat-lg reveal-up">
+          <div class="feat-bg" style="background-image:url('img/shot_deep_mine.jpg')"></div>
+          <div class="feat-content">
+            <i class="fas fa-cube feat-icon"></i>
+            <h3>A Mine You Reshape</h3>
+            <p>500 rows deep, 50 columns wide, procedurally generated and completely destructible. Tunnel any direction and place ladders, ceiling supports and bridging beams to build your own route down — then fall down your own shaft if you're careless.</p>
+          </div>
+        </div>
+
+        <div class="feat-card reveal-up" style="--delay:0.1s">
+          <div class="feat-bg" style="background-image:url('img/iron_forge_bg.png')"></div>
+          <div class="feat-content">
+            <i class="fas fa-gavel feat-icon"></i>
+            <h3>12 Skill Minigames</h3>
+            <p>Hit ore and you earn the yield. Time the Iron Striker, purify gold, align diamond fissures, hold a harmonic resonance — nail it perfectly for five units instead of one, plus a bonus gem roll.</p>
+          </div>
+        </div>
+
+        <div class="feat-card reveal-up" style="--delay:0.15s">
+          <div class="feat-bg" style="background-image:url('img/shot_vault.jpg')"></div>
+          <div class="feat-content">
+            <i class="fas fa-vault feat-icon"></i>
+            <h3>Six Puzzle Vaults</h3>
+            <p>Hand-built labyrinths, not random rooms. Dodge flame jets, ride wind geysers, survive a gas maze, pick the vault lock — each one guards a Keystone the campaign needs.</p>
+          </div>
+        </div>
+
+        <div class="feat-card reveal-up" style="--delay:0.2s">
+          <div class="feat-bg" style="background-image:url('img/shot_contracts.jpg')"></div>
+          <div class="feat-content">
+            <i class="fas fa-clipboard-list feat-icon"></i>
+            <h3>Company Contracts</h3>
+            <p>Daily, weekly and monthly jobs from the Gemhollow Mining Company that scale with your pickaxe tier. Clear 40 in a month and you keep that month's exclusive aura for good.</p>
+          </div>
+        </div>
+
+        <div class="feat-card reveal-up" style="--delay:0.25s">
+          <div class="feat-bg" style="background-image:url('img/jasper_hideout_bg.png')"></div>
+          <div class="feat-content">
+            <i class="fas fa-paw feat-icon"></i>
+            <h3>Ten Pets</h3>
+            <p>Buy them with gems, not cash. A Quartz Dog adds speed and ladders, a Ruby Cat doubles every ore you collect, a Sapphire Bat throws away spare stone so your pack stays useful.</p>
+          </div>
+        </div>
+
+        <div class="feat-card reveal-up" style="--delay:0.3s">
+          <div class="feat-bg" style="background-image:url('img/shot_gear_shop.jpg')"></div>
+          <div class="feat-content">
+            <i class="fas fa-robot feat-icon"></i>
+            <h3>Robot Miners</h3>
+            <p>Donate ore to build a fleet of twelve automated units, from a Stone Excavator up to an Aetheric Unit at six times the yield. They keep digging while the app is closed — up to twelve hours on a full power cell.</p>
+          </div>
+        </div>
+
+        <div class="feat-card feat-lg reveal-up" style="--delay:0.35s">
+          <div class="feat-bg" style="background-image:url('img/shot_daily_rewards.jpg')"></div>
+          <div class="feat-content">
+            <i class="fas fa-chart-line feat-icon"></i>
+            <h3>A Market That Moves</h3>
+            <p>Ore prices drift, surge and recover in real time — dump too much of one ore and you depress its price, or wait for a demand event and double your money. Add a 30-day login ladder, stacking boosts, 17 auras and 38 Play Games achievements on top.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ GEAR / PROGRESSION ═══════════════════════════════════════════════ -->
+  <section class="gear section" id="gear">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Earn Every Tier</span>
+        <h2>The <em class="c-gold">Pickaxe Ladder</em></h2>
+        <p class="section-sub">Real damage values from the game. Each tier is the difference between bouncing off a block and breaking it.</p>
+      </div>
+
+      <div class="pick-grid">
+        <div class="pick-card reveal-up">
+          <img src="img/basic_pickaxe_icon.png" alt="Basic Pickaxe" loading="lazy" />
+          <h4>Basic Pickaxe</h4>
+          <div class="pick-dmg">5 <span>dmg</span></div>
+          <p>A trusty starting pickaxe.</p>
+          <span class="pick-cost">Free</span>
+        </div>
+        <div class="pick-card reveal-up" style="--delay:0.08s">
+          <img src="img/iron_pickaxe_icon.png" alt="Iron Pickaxe" loading="lazy" />
+          <h4>Iron Pickaxe</h4>
+          <div class="pick-dmg">20 <span>dmg</span></div>
+          <p>Cracks the hard iron the basic pick can't touch.</p>
+          <span class="pick-cost">$8,000</span>
+        </div>
+        <div class="pick-card reveal-up" style="--delay:0.16s">
+          <img src="img/gold_pickaxe_icon.png" alt="Gold Pickaxe" loading="lazy" />
+          <h4>Gold Pickaxe</h4>
+          <div class="pick-dmg">50 <span>dmg</span></div>
+          <p>Cuts through rock and gold with ease.</p>
+          <span class="pick-cost">$16,000 + ore</span>
+        </div>
+        <div class="pick-card reveal-up" style="--delay:0.24s">
+          <img src="img/diamond_pickaxe_icon.png" alt="Diamond Pickaxe" loading="lazy" />
+          <h4>Diamond Pickaxe</h4>
+          <div class="pick-dmg">120 <span>dmg</span></div>
+          <p>The ultimate tool for the surface world.</p>
+          <span class="pick-cost">$75,000 + ore</span>
+        </div>
+        <div class="pick-card pick-card-rare reveal-up" style="--delay:0.32s">
+          <img src="img/augmented_diamond_pickaxe_icon.png" alt="Augmented Diamond Pickaxe" loading="lazy" />
+          <h4>Augmented Diamond</h4>
+          <div class="pick-dmg">250 <span>dmg</span></div>
+          <p>Infused with Aetherium — resonates with Prismatic Cores.</p>
+          <span class="pick-cost pick-cost-rare">Quest reward only</span>
+        </div>
+      </div>
+
+      <p class="gear-note reveal-up">
+        The Abyss runs its own ladder on top of this one — a Makeshift pickaxe, then
+        <strong>Void-Tinged</strong> (150), <strong>Astral</strong> (600) and beyond, each forged
+        from ores that only exist down there. Alongside it: eight backpack tiers from 15 slots to
+        1,000, four head-torch levels, gas masks, ladder pouches, drill bits and battery packs.
+      </p>
+
+      <!-- Sell values straight from the game's block definitions. -->
+      <div class="ore-strip reveal-up">
+        <h3 class="ore-strip-title">What the deep is worth</h3>
+        <ul class="ore-list">
+          <li class="ore-item">
+            <img src="img/quartz.png" alt="Quartz" loading="lazy" />
+            <span class="ore-name">Quartz</span>
+            <span class="ore-val">$100</span>
+          </li>
+          <li class="ore-item">
+            <img src="img/ruby_icon.png" alt="Ruby" loading="lazy" />
+            <span class="ore-name">Ruby</span>
+            <span class="ore-val">$300</span>
+          </li>
+          <li class="ore-item">
+            <img src="img/sapphire_icon.png" alt="Sapphire" loading="lazy" />
+            <span class="ore-name">Sapphire</span>
+            <span class="ore-val">$600</span>
+          </li>
+          <li class="ore-item">
+            <img src="img/prismatic_core.png" alt="Prismatic Core" loading="lazy" />
+            <span class="ore-name">Prismatic Core</span>
+            <span class="ore-val">$750</span>
+          </li>
+          <li class="ore-item">
+            <img src="img/aetherium.png" alt="Aetherium" loading="lazy" />
+            <span class="ore-name">Aetherium</span>
+            <span class="ore-val">$2,500</span>
+          </li>
+        </ul>
+        <p class="ore-foot">
+          Every one of these has a corrupted Abyss counterpart worth roughly double — Dark Quartz,
+          Blood Ruby, Star Sapphire, Void Core, and Dark Aetherium at <strong>$5,000</strong>.
+          And the Market moves those prices while you play.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ VAULTS ════════════════════════════════════════════════════════════ -->
+  <section class="vaults section" id="vaults">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Hand-Built Challenges</span>
+        <h2>The <em class="c-cyan">Vaults</em></h2>
+        <p class="section-sub">Six of them, each a designed puzzle with its own hazard and its own Keystone at the end.</p>
+      </div>
+      <div class="vault-grid">
+        <div class="vault-card reveal-up" data-glow="green">
+          <div class="vault-num">I</div>
+          <h3>The Vault of Earth</h3>
+          <p>A pitch-dark procedural labyrinth. You get 99 ladders and 25 beams — the challenge is navigating the maze and solving the gate sequence, not rationing supplies.</p>
+          <span class="vault-tag">Keystone of Earth</span>
+        </div>
+        <div class="vault-card reveal-up" style="--delay:0.08s" data-glow="red">
+          <div class="vault-num">II</div>
+          <h3>The Vault of Fire</h3>
+          <p>Fifty-two rows of hand-tuned maze threaded with flame-jet emitters and magma rock that detonates when struck. Reach the venting console at the top to shut it down.</p>
+          <span class="vault-tag">Keystone of Fire</span>
+        </div>
+        <div class="vault-card reveal-up" style="--delay:0.16s" data-glow="cyan">
+          <div class="vault-num">III</div>
+          <h3>The Vault of Sky</h3>
+          <p>Seventy-five rows straight up. Build platforms over wind geysers, ride the updraft, land the jump — miss and you start the climb again.</p>
+          <span class="vault-tag">Keystone of Sky</span>
+        </div>
+        <div class="vault-card reveal-up" style="--delay:0.24s" data-glow="green">
+          <div class="vault-num">IV</div>
+          <h3>The Toxic Vault</h3>
+          <p>Twenty ladders, five gas pockets, and a golden chest at the far end. Break the wrong block and the fog comes for you.</p>
+          <span class="vault-tag">Golden Chest</span>
+        </div>
+        <div class="vault-card reveal-up" style="--delay:0.32s" data-glow="purple">
+          <div class="vault-num">V</div>
+          <h3>The Abyssal Vault</h3>
+          <p>A tight bridging puzzle in the deep dark, with a Keystone of Fire waiting at the end of a long horizontal run.</p>
+          <span class="vault-tag">Abyss · World II</span>
+        </div>
+        <div class="vault-card reveal-up" style="--delay:0.4s" data-glow="purple">
+          <div class="vault-num">VI</div>
+          <h3>The Void Vault</h3>
+          <p>Five wind geysers, fifty beams, fifty ladders and a Keystone of Sky. The last vault before the Overworld Interface.</p>
+          <span class="vault-tag">Abyss · World II</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ THE CLAIM ═════════════════════════════════════════════════════════ -->
+  <section class="claim section" id="claim">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">New Feature</span>
+        <h2>The <em class="c-gold">Claim</em></h2>
+        <p class="section-sub">A plot of land the Company sets aside for you, early — decorate the grounds, then step inside your house and greenhouse and decorate those too.</p>
+      </div>
+
+      <figure class="claim-hero reveal-up">
+        <img src="img/shot_claim.jpg" alt="A fully decorated Claim: a Miner's Cabin and Greenhouse surrounded by a pond, statue, obelisk, well and garden fencing" loading="lazy" />
+        <figcaption class="claim-hero-cap">Every item in this shot is real catalogue art, placed and screenshotted in the live build.</figcaption>
+      </figure>
+
+      <div class="claim-info-grid">
+        <div class="claim-info reveal-left">
+          <h3>Yours from early on</h3>
+          <p>The quest <em>Stake Your Claim</em> hands you the plot not far into the surface game — name it, and a free Miner's Cabin is yours to set down wherever you like. Everything after that is bought with <strong>Sovereigns</strong>, a currency that exists only for the Claim.</p>
+          <p>You earn Sovereigns by shipping raw ore at the plot's own Shipping Office — no trip to the Market required. It's a second use for the ore piling up in your bag, not a second grind.</p>
+        </div>
+        <div class="claim-info reveal-right">
+          <h3>Purely yours to arrange</h3>
+          <p>Every tree, fence, path and building here is cosmetic — nothing you place changes your mining stats or your progress. It's the one part of Gemhollow that's just for you: your cabin, your garden, your greenhouse, arranged exactly how you want them.</p>
+          <p>Collect a full set of any category — every fence type, every seat, every plant — and the Company pays out a one-time Sovereigns bonus for the completionists.</p>
+        </div>
+      </div>
+
+      <div class="claim-rooms">
+        <figure class="claim-room reveal-up">
+          <img src="img/shot_house_interior.jpg" alt="Inside the Miner's Cabin: a furnished bedroom with a fireplace, bookshelf, wardrobe and wall art" loading="lazy" />
+          <figcaption class="claim-room-cap">
+            <span class="claim-room-name">Inside the House</span>
+            <span class="claim-room-sub">Beds, hearths, tables, storage, lighting, wall art</span>
+          </figcaption>
+        </figure>
+        <figure class="claim-room reveal-up" style="--delay:0.1s">
+          <img src="img/shot_greenhouse_interior.jpg" alt="Inside the Greenhouse: potting benches, hanging baskets and pots of growing plants" loading="lazy" />
+          <figcaption class="claim-room-cap">
+            <span class="claim-room-name">Inside the Greenhouse</span>
+            <span class="claim-room-sub">Fittings, and eight species of plant that actually grow</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="claim-stats reveal-up">
+        <div class="claim-stat">
+          <div class="claim-stat-val">76</div>
+          <div class="claim-stat-lbl">Placeable Items</div>
+        </div>
+        <div class="claim-stat">
+          <div class="claim-stat-val">3</div>
+          <div class="claim-stat-lbl">House Tiers</div>
+        </div>
+        <div class="claim-stat">
+          <div class="claim-stat-val">8</div>
+          <div class="claim-stat-lbl">Growable Plants</div>
+        </div>
+        <div class="claim-stat">
+          <div class="claim-stat-val">15</div>
+          <div class="claim-stat-lbl">Collection Sets</div>
+        </div>
+      </div>
+      <p class="gear-note reveal-up">
+        Plants are the one thing on the Claim that runs on a real clock — pot one in the
+        Greenhouse and it grows through its stages over 4 to 12 hours of real time, timer or
+        app open or not. Grow one to full bloom and it unlocks for the house too, not just
+        the glasshouse it was raised in.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ MINERS (cosmetic skins — stated as such, honestly) ═══════════════ -->
+  <section class="classes section" id="miners">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Look The Part</span>
+        <h2>Twenty-One <em class="c-gold">Miners</em></h2>
+        <p class="section-sub">Cosmetic appearances, not classes — every miner plays identically, so nothing is locked behind a look. Swap them at the Character Market.</p>
+      </div>
+      <div class="classes-grid">
+
+        <div class="class-card reveal-up" data-glow="cyan">
+          <div class="class-icon-wrap class-icon-pair">
+            <img src="img/character_icon_male.png" alt="Male Miner" loading="lazy" />
+            <img src="img/character_icon_female.png" alt="Female Miner" loading="lazy" />
+          </div>
+          <div class="class-tag cyan-tag">Starter</div>
+          <h3>Male &amp; Female Miner</h3>
+          <p>Both unlocked from the first launch. Pick one on the character select screen and get digging.</p>
+        </div>
+
+        <div class="class-card reveal-up" style="--delay:0.1s" data-glow="cyan">
+          <div class="class-icon-wrap">
+            <img src="img/prismatic_miner_icon.png" alt="Prismatic Miner" loading="lazy" />
+          </div>
+          <div class="class-tag cyan-tag">Quest</div>
+          <h3>Prismatic Miner</h3>
+          <p>Earned by finishing <em>A Lost Legend</em>. Collect it from the Character Market once the quest closes.</p>
+        </div>
+
+        <div class="class-card reveal-up" style="--delay:0.2s" data-glow="gold">
+          <div class="class-icon-wrap">
+            <img src="img/golden_miner_icon.png" alt="Golden Miner" loading="lazy" />
+          </div>
+          <div class="class-tag gold-tag">Day 30</div>
+          <h3>Golden Miner</h3>
+          <p>The prize at the end of the 30-day login ladder. Miss a day and the streak skips — no shortcuts.</p>
+        </div>
+
+        <div class="class-card reveal-up" style="--delay:0.3s" data-glow="green">
+          <div class="class-icon-wrap">
+            <img src="img/lucky_miner_icon.png" alt="Lucky Miner" loading="lazy" />
+          </div>
+          <div class="class-tag green-tag">Secret</div>
+          <h3>Lucky Miner</h3>
+          <p>A rare roll from supply crates. Nobody sells it and no quest grants it — you get lucky, or you don't.</p>
+        </div>
+
+        <div class="class-card reveal-up" style="--delay:0.4s" data-glow="purple">
+          <div class="class-icon-wrap">
+            <img src="img/astral_weaver_icon.png" alt="Astral Weaver" loading="lazy" />
+          </div>
+          <div class="class-tag purple-tag">Founders</div>
+          <h3>Astral Weaver</h3>
+          <p>Part of the Founders Pack, at the game's largest visual scale. There's a corrupted Abyss variant too.</p>
+        </div>
+
+        <div class="class-card reveal-up" style="--delay:0.5s" data-glow="gold">
+          <div class="class-icon-wrap">
+            <img src="img/character_icon_jasper.png" alt="Jasper" loading="lazy" />
+          </div>
+          <div class="class-tag gold-tag">Hidden</div>
+          <h3>Jasper</h3>
+          <p>The fence with the hideout below the mine. Play as him — if you can work out how he's unlocked.</p>
+        </div>
+
+      </div>
+      <p class="gear-note reveal-up">
+        Plus the Elite Prospector and Mythic Excavator from the token shop, the Rookie Miner kit,
+        Blacksmith and Elite Vanguard as prestige rewards, and Abyss-tinted versions of nearly all
+        of them — 21 in total.
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══ GALLERY — real, unedited captures from the shipped build ═════════ -->
+  <section class="gallery section" id="gallery">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Actual Screenshots</span>
+        <h2>Game <em class="c-cyan">Gallery</em></h2>
+        <p class="section-sub">Captured from the live Android build — no mock-ups, no touch-ups.</p>
+      </div>
+      <div class="gallery-grid">
+        <figure class="gallery-item gal-wide reveal-up">
+          <img src="img/shot_hub.jpg" alt="The surface village hub with Mine Control, Market, Item Shop, Gear Shop and the portal to the deep" loading="lazy" />
+          <figcaption class="gallery-cap">The Surface Hub</figcaption>
+        </figure>
+        <figure class="gallery-item reveal-up" style="--delay:0.1s">
+          <img src="img/shot_deep_mine.jpg" alt="Mining gem veins with player-placed ladders and ceiling supports" loading="lazy" />
+          <figcaption class="gallery-cap">Descend Into The Deep</figcaption>
+        </figure>
+        <figure class="gallery-item reveal-up" style="--delay:0.15s">
+          <img src="img/shot_vault.jpg" alt="Inside a vault dodging an active flame jet" loading="lazy" />
+          <figcaption class="gallery-cap">Vault Run, Flames Live</figcaption>
+        </figure>
+        <figure class="gallery-item reveal-up" style="--delay:0.2s">
+          <img src="img/shot_gear_shop.jpg" alt="The Gear Shop upgrade screen" loading="lazy" />
+          <figcaption class="gallery-cap">Upgrade Your Gear</figcaption>
+        </figure>
+        <figure class="gallery-item reveal-up" style="--delay:0.25s">
+          <img src="img/shot_contracts.jpg" alt="The Company Contracts board with daily and weekly jobs" loading="lazy" />
+          <figcaption class="gallery-cap">Company Contracts</figcaption>
+        </figure>
+        <figure class="gallery-item reveal-up" style="--delay:0.3s">
+          <img src="img/shot_depth.jpg" alt="The depth meter tracking how far below the surface you are" loading="lazy" />
+          <figcaption class="gallery-cap">How Deep Can You Go?</figcaption>
+        </figure>
+        <figure class="gallery-item gal-wide reveal-up" style="--delay:0.35s">
+          <img src="img/shot_daily_rewards.jpg" alt="The 30-day daily rewards calendar" loading="lazy" />
+          <figcaption class="gallery-cap">Thirty Days Of Rewards</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ MEDIA ═════════════════════════════════════════════════════════════ -->
+  <section class="media section" id="media">
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Watch &amp; Play</span>
+        <h2>Game <em class="c-cyan">Media</em></h2>
+      </div>
+      <div class="media-grid">
+        <div class="video-card reveal-up">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/ZEsTNP-w54s" title="Gemhollow gameplay" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-label"><i class="fas fa-play-circle"></i> Gameplay</div>
+        </div>
+        <div class="video-card reveal-up" style="--delay:0.15s">
+          <div class="video-wrap">
+            <iframe src="https://www.youtube.com/embed/5hK7UNuHh_g" title="Gemhollow feature showcase" allowfullscreen loading="lazy"></iframe>
+          </div>
+          <div class="video-label"><i class="fas fa-star"></i> Feature Showcase</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA BANNER ════════════════════════════════════════════════════════ -->
+  <section class="cta-banner">
+    <div class="container cta-inner reveal-up">
+      <div class="cta-text">
+        <h2>How deep can you get?</h2>
+        <p>Grab a pickaxe and find out. Gemhollow is free on Android, and the rewarded ads are always optional.</p>
+        <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.pixelminergame.pixelminer" target="_blank" rel="noopener">
+          <i class="fab fa-google-play"></i> Download on Google Play
+        </a>
+      </div>
+      <div class="cta-visual" aria-hidden="true">
+        <img src="img/gemhollow_mark.png" alt="" class="cta-chest" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CONTACT ═══════════════════════════════════════════════════════════ -->
+  <section class="contact section" id="contact">
+    <div class="contact-bg" style="background-image:url('img/bg-camp.png')"></div>
+    <div class="contact-overlay"></div>
+    <div class="container">
+      <div class="section-head reveal-up">
+        <span class="eyebrow">Get In Touch</span>
+        <h2>Contact <em class="c-gold">Us</em></h2>
+        <p class="section-sub">Bug reports, feedback or partnership enquiries — we read everything.</p>
+      </div>
+      <div class="contact-inner">
+        <div class="contact-info reveal-left">
+          <div class="cinfo-item">
+            <div class="cinfo-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <strong>Email Us</strong>
+              <a href="mailto:pixelminerinc@gmail.com">pixelminerinc@gmail.com</a>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon"><i class="fab fa-google-play"></i></div>
+            <div>
+              <strong>Download the Game</strong>
+              <a href="https://play.google.com/store/apps/details?id=com.pixelminergame.pixelminer" target="_blank" rel="noopener">Available on Google Play</a>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon"><i class="fab fa-youtube"></i></div>
+            <div>
+              <strong>YouTube</strong>
+              <a href="https://youtube.com/@gemhollow" target="_blank" rel="noopener">@gemhollow</a>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon"><i class="fab fa-tiktok"></i></div>
+            <div>
+              <strong>TikTok</strong>
+              <a href="https://www.tiktok.com/@gemhollow" target="_blank" rel="noopener">@gemhollow</a>
+            </div>
+          </div>
+          <div class="cinfo-item">
+            <div class="cinfo-icon"><i class="fas fa-shield-halved"></i></div>
+            <div>
+              <strong>Privacy Policy</strong>
+              <a href="privacy.html">View our privacy policy</a>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form reveal-right" action="https://formspree.io/f/your_form_id" method="POST">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your name" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="What's this about?" />
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us what you think..." required></textarea>
+          </div>
+          <button class="btn btn-primary" type="submit">
+            Send Message <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ════════════════════════════════════════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="footer-logo" href="#hero">
+          <img src="img/gemhollow_mark_sm.png" alt="" aria-hidden="true" />
+          <span>Gemhollow</span>
+        </a>
+        <p>A hand-painted mining RPG for Android, made by Pixel Inc.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Game</h4>
+          <a href="#about">About</a>
+          <a href="#worlds">Worlds</a>
+          <a href="#systems">Systems</a>
+          <a href="#gear">Gear</a>
+        </div>
+        <div class="footer-col">
+          <h4>Media</h4>
+          <a href="#gallery">Gallery</a>
+          <a href="#media">Videos</a>
+          <a href="https://youtube.com/@gemhollow" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://www.tiktok.com/@gemhollow" target="_blank" rel="noopener">TikTok</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="../">Pixel Inc</a>
+          <a href="#contact">Contact</a>
+          <a href="privacy.html">Privacy</a>
+          <a href="mailto:pixelminerinc@gmail.com">Email</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <p>&copy; 2026 Pixel Inc. Gemhollow and the Gemhollow logo are trademarks of Pixel Inc. All rights reserved.</p>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </footer>
+
+  <script src="script.js?v=3"></script>
+</body>
+</html>
